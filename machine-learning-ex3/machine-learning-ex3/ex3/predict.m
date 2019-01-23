@@ -21,9 +21,21 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
-size(X)
-size(Theta1)
-hidden = sigmoid(Theta1 * X');
+A0=ones(1,columns(X'));
+X = [A0;X'];
+A2 = sigmoid(Theta1*X);
+
+A0=ones(1,columns(A2));
+size(A0)
+A2 = [A0;A2];
+
+A3 = sigmoid(Theta2*A2);
+size(A3)
+
+[probability indices] = max(A3);
+p = indices';
+
+%hidden = sigmoid(Theta1 * X');
 
 
 
